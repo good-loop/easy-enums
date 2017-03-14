@@ -35,10 +35,12 @@ class Enum {
 			/** isCONSTANT: {string} -> {boolean} */
 			this['is'+k] = function(v) {
 				if ( ! v) return false;
-				if ( ! this.enumerator[v]) throw 'Invalid Enum value: '+v;
+				if ( ! this.enumerator[v]) throw new Error('Invalid Enum value: '+v);
 				return v===this.k;
 			}.bind({enumerator:this, k:k});
-		}
+			/** $CONSTANT: {string} -> {string} safety accessor */
+			this['$'+k] = () => k;
+		}		
 		// Prevent edits
 		if (Object.freeze) {
 			Object.freeze(this);
