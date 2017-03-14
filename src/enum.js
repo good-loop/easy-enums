@@ -53,7 +53,7 @@ class Enum {
 	 */
 	has(s) {
 		return this.values.indexOf(s) != -1;
-	}
+	}	
 }
 
 export default Enum;
