@@ -12,7 +12,10 @@
   ],
   "author": "Daniel Winterstein",
   "license": "MIT",
-
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winterstein/easy-enums.git"
+  },
    "babel": {
     "presets": [
       "es2015"
