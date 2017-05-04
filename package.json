@@ -3,9 +3,6 @@
   "version": "1.1.5",
   "description": "Easy but powerful enums for safer code. e.g. const Fruit = new Enum(\"apple pear banana\"); gives you Fruit.apple, Fruit.has(\"apple\"), and Fruit.$apple() (as a fail-fast value), whilst Fruit.isApple('penguin') will throw an error.",
   "main": "./bin/enum.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "enum",
     "type-checking"
