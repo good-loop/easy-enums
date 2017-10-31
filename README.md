@@ -17,7 +17,9 @@ non-false value indicates an error.
  
 `MyFruit.values` holds the full list (and is frozen to keep it safe from edits).
  
-`MyFruit.has(thing)` provides a test, true if thing is a valid value.
+`MyFruit.has(thing)` provides a boolean test, true if thing is a valid value.
+
+`MyFruit.assert(thing)` is a convenience test: It will throw an error if `thing` is invalid. Returns `thing` if fine.
 
 There is also a fail-fast way to access a constant:
 `MyKind.$VALUE()` is identical to `MyKind.VALUE` except that it will trigger

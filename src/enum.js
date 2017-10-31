@@ -51,11 +51,20 @@ class Enum {
 	/**
 	 * @param s {string}
 	 * @returns true if s is a value of this enum, false otherwise.
-	 * Use-case: assert(has(someInput));
 	 */
 	has(s) {
 		return this.values.indexOf(s) != -1;
 	}	
+
+	/**
+	 * @param s {String}
+	 * @throws Error if s is not a value of this enum.
+	 * @returns s (so this can be used as a safety-check in chained method calls)
+	 */
+	assert(s) {
+		if (this.has(s)) return s;
+		throw new Error("Invalid enum: "+s+" is not in "+this.values);
+	}
 }
 
 export default Enum;
