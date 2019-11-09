@@ -57,13 +57,14 @@ class Enum {
 	}	
 
 	/**
-	 * @param s {String}
+	 * @param {!String} s
+	 * @param {?String} msg Optional error message (e.g. to give extra debug info)
 	 * @throws Error if s is not a value of this enum.
 	 * @returns s (so this can be used as a safety-check in chained method calls)
 	 */
-	assert(s) {
+	assert(s, msg) {
 		if (this.has(s)) return s;
-		throw new Error("Invalid enum: "+s+" is not in "+this.values);
+		throw new Error("Invalid Enum: "+s+" is not in "+this.values+(msg?" "+msg:""));
 	}
 }
 
