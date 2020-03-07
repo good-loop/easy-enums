@@ -20,12 +20,13 @@
  */
 class Enum {
 
-	/**
-	 * @typedef {String[]}
-	 */
-	values;
+	// /** NB - needs a bit of babel setup for class properties
+	//  * @typedef {String[]}
+	//  */
+	// values;
 
-	/** @param values {string|string[]}
+	/** 
+	 * @param values {string|string[]}
 	*/
 	constructor(values) {
 		// Set the values array
@@ -53,14 +54,20 @@ class Enum {
 		return this.values.indexOf(s) != -1;
 	}	
 
-	add(s) {
+	/**
+	 * Enums cannot be edited -- so this makes a copy.
+	 * @param {!String} s 
+	 * @returns {Enum} a modified copy
+	 */
+	concat(s) {
 		if (this.values.indexOf(s) !== -1) {
 			console.warn("Enum - duplicate add "+s+" to "+values);
 			return this;
 		}
-		this.values.push(s);
-		this._add2(s);
-		return this;
+		// copy
+		const values2 = this.values.concat(s);
+		const copy = new Enum(values2);
+		return copy;
 	}
 
 	/** Assume: this.values already holds k. Make the associated functions for a value */
