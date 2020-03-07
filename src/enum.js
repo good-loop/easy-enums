@@ -20,6 +20,11 @@
  */
 class Enum {
 
+	/**
+	 * @typedef {String[]}
+	 */
+	values;
+
 	/** @param values {string|string[]}
 	*/
 	constructor(values) {
@@ -31,15 +36,7 @@ class Enum {
 		}
 		for(let i=0; i<this.values.length; i++) {
 			let k = this.values[i];
-			this[k] = k;
-			/** isCONSTANT: {string} -> {boolean} */
-			this['is'+k] = function(v) {
-				if ( ! v) return false;
-				if ( ! this.enumerator[v]) throw new Error('Invalid Enum value: '+v);
-				return v===this.k;
-			}.bind({enumerator:this, k:k});
-			/** $CONSTANT: {string} -> {string} safety accessor */
-			this['$'+k] = () => k;
+			this._add2(k);	
 		}		
 		// Prevent edits
 		if (Object.freeze) {
@@ -54,6 +51,35 @@ class Enum {
 	 */
 	has(s) {
 		return this.values.indexOf(s) != -1;
+	}	
+
+	add(s) {
+		if (this.values.indexOf(s) !== -1) {
+			console.warn("Enum - duplicate add "+s+" to "+values);
+			return this;
+		}
+		this.values.push(s);
+		this._add2(s);
+		return this;
+	}
+
+	/** Assume: this.values already holds k. Make the associated functions for a value */
+	_add2(k) {
+		// 
+		if (this[k]) {
+			// Safety: defend against e.g. k='add' or k='has'
+			console.error("Enum.js Tried to override "+k, this);
+		} else {
+			this[k] = k;
+		}
+		/** isCONSTANT: {string} -> {boolean} */
+		this['is'+k] = function(v) {
+			if ( ! v) return false;
+			if ( ! this.enumerator[v]) throw new Error('Invalid Enum value: '+v);
+			return v===this.k;
+		}.bind({enumerator:this, k:k});
+		/** $CONSTANT: {string} -> {string} safety accessor */
+		this['$'+k] = () => k;
 	}	
 
 	/**

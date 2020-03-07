@@ -16,6 +16,11 @@ SJTest.run({name:'Enum',
 		let FRUIT = new Enum("APPLE PEAR");
 		assert(FRUIT.$APPLE() === 'APPLE');
 		FRUIT.$cat();
-	}
+	},
 
+	addTest: function() {
+		let FRUIT = new Enum("APPLE PEAR");
+		FRUIT.add("ORANGE");
+		assert(FRUIT.$ORANGE() === 'ORANGE');
+	}
 });
