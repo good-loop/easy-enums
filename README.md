@@ -1,5 +1,5 @@
 
-# easy-enums, by Winterwell/SoDash/Orla
+# easy-enums, by Good-Loop/Winterwell
 
 `Enum` is a simple yet useful utility for safer code.
 
