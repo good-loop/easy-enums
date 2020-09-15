@@ -61,7 +61,7 @@ class Enum {
 	 */
 	concat(s) {
 		if (this.values.indexOf(s) !== -1) {
-			console.warn("Enum - duplicate add "+s+" to "+values);
+			console.warn("Enum - duplicate add "+s+" to "+this.values);
 			return this;
 		}
 		// copy
