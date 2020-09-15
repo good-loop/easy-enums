@@ -1,6 +1,8 @@
 
 # easy-enums, by Good-Loop/Winterwell
 
+NPM: https://www.npmjs.com/package/easy-enums
+
 `Enum` is a simple yet useful utility for safer code.
 
 It makes a set of string constants, kind of like a Java enum. 
